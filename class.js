@@ -6,9 +6,12 @@ function factorial(x){
     return x * factorial(x - 1);
 }
 
-// Base Case: is where we give the condition to stop 
-// recursion. In the above code, if condition is the 
-// base case and return is the recursive case.
+// "Base Case": Is where we give the condition to stop 
+// recursion. 
+// In the above code, if condition is the  base case to stop.
+// "Recursive case" : This is where we write the formula to
+// solve or execute the problem
+// In the above code, return factorial is the recursive case
 
 
 /*---------------------------

@@ -8,14 +8,15 @@ console.log(factorial(3)); // 6
 console.log(factorial(7)); // 5040
 ------------------*/
 
-// function factorial(x) {
-  // base case
- 
-  // recursive case
-
-// }
-// console.log(factorial(3));  6
-// console.log(factorial(7));  5040
+function factorial(x) {
+  //base case
+  if(x === 0)
+  return 1; 
+  //recursive case
+return (x * factorial(x - 1));
+}
+console.log(factorial(3));  6
+console.log(factorial(7));  5040
 
 /*------------------
 2)
@@ -29,13 +30,17 @@ console.log(createStars(5)); // "*****"
 console.log(createStars(0)); // ""
 ------------------*/
 
-// function createStars() {
-  
-// }
+function createStars(l) {
+  //base case
+  if(l === 0)
+   return "";
+  //recursive case
+  return ("*" + createStars(l - 1));
+}
 
-// console.log(createStars(5));  //"*****"
-// console.log(createStars(0));  //""
-
+console.log(createStars(5));  //"*****" => 1+4
+console.log(createStars(0));  //""
+console.log(createStars(3));  // *** => 1+2
 
 /*------------------
 3)
@@ -50,14 +55,18 @@ console.log(addUpTo(3)); // 6 (1 + 2 + 3)
 console.log(addUpTo(100)); // 5050 (1 + 2 + ... + 99 + 100)
 ------------------*/
 
-// function addUpTo() {
-
-// }
+function addUpTo(n) {
+  // base case
+    if(n === 0)
+    return 0;
+  //recursive case
+  return (n + addUpTo(n-1));
+}
 
 // console.log(addUpTo(1)); // 1
-// console.log(addUpTo(2));  //3 (1 + 2)
-// console.log(addUpTo(3));  //6 (1 + 2 + 3)
-// console.log(addUpTo(100));  //5050 (1 + 2 + "..." + 99 + 100)
+console.log(addUpTo(2));  //3 (1 + 2)
+console.log(addUpTo(3));  //6 (1 + 2 + 3)
+console.log(addUpTo(100));  //5050 (1 + 2 + "..." + 99 + 100)
 
 /*------------------
 4)
@@ -71,17 +80,26 @@ Test case:
 console.log(sum([1, 2, 3, 4, 5, 6])); // 21
 ------------------*/
 
-// function sum(arr) {
-  // base case
- 
-  // recursive case
-  
-// }
-// console.log(sum([1, 2, 3, 4, 5, 6]));  21
+
+function sum(arr) {  
+  //base case
+  if (arr > 0)
+  return arr[0];
+
+  //recursive case : pop the last element from array
+  // and hold it to add to the next pop out element
+  // untill the array.length becomes 0. => "not achieved"
+
+  //The "other-way" is achieved
+  // pop the last element from array and add the same to the 
+  // next array recursively till array > 0
+
+  return (arr.pop() + sum(arr));  
+}
+console.log(sum([1, 2, 3, 4, 5, 6])); // 21
+
 /*------------------
 5)
-
-
 In Fibonnaci, the next number is a sum of the
 two preceding ones. The first two numbers are 1,
 then 2(1+1), then 3(1+2), 5(2+3) and so on:
@@ -97,19 +115,37 @@ console.log(fib(2)); // 2
 console.log(fib(3)); // 3
 console.log(fib(7)); // 21
 ------------------*/
+/*
+Fibonacci:
+fib(0) = 1
+fib(1) = fib(0) + 1;
+       = 1 + 1 = 2
+fib(2) = fib(1) + fib(0)
+       = 2 + 1 = 3
+fib(3) = fib(2) + fib(1)
+       = 3 + 2 = 5
+fib(4) = fib(3) + fib(2)
+       = 5 + 3 = 8
+fib(5) = fib(4) + fib(3)
+       = 8 + 5 = 13...... so on..
+       extracting formula from the above sequences
+fib(n) = fib(n-1) + fib(n-2)
+*/
 
-// function fib(n) {
-  // base case
- 
-  // recursive case
+function fib(n) {
   
+ // base case
+  if( n <= 1) 
+  return n;
+ // recursive case
+  return  fib(n-1) + fib(n-2)
   
-// }
-// console.log(fib(0)); // 1
-// console.log(fib(1)); // 1
-// console.log(fib(2)); // 2
-// console.log(fib(3)); // 3
-// console.log(fib(7)); // 21
+}
+console.log(fib(0)); // 1
+console.log(fib(1)); // 1
+console.log(fib(2)); // 2
+console.log(fib(3)); // 3
+console.log(fib(7)); // 21
 
 
 /*------------------
