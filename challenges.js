@@ -6,6 +6,7 @@ Try not to look at the slides.
 Test case:
 console.log(factorial(3)); // 6
 console.log(factorial(7)); // 5040
+
 ------------------*/
 
 function factorial(x) {
@@ -83,8 +84,8 @@ console.log(sum([1, 2, 3, 4, 5, 6])); // 21
 
 function sum(arr) {  
   //base case
-  if (arr > 0)
-  return arr[0];
+  if (arr.length === 0)
+  return 0;
 
   //recursive case : pop the last element from array
   // and hold it to add to the next pop out element
@@ -92,7 +93,7 @@ function sum(arr) {
 
   //The "other-way" is achieved
   // pop the last element from array and add the same to the 
-  // next array recursively till array > 0
+  // next array recursively untill the array.length becomes 0.
 
   return (arr.pop() + sum(arr));  
 }
@@ -116,7 +117,9 @@ console.log(fib(3)); // 3
 console.log(fib(7)); // 21
 ------------------*/
 /*
+
 Fibonacci:
+
 fib(0) = 1
 fib(1) = fib(0) + 1;
        = 1 + 1 = 2
@@ -136,7 +139,7 @@ function fib(n) {
   
  // base case
   if( n <= 1) 
-  return n;
+  return 1;
  // recursive case
   return  fib(n-1) + fib(n-2)
   
@@ -147,6 +150,55 @@ console.log(fib(2)); // 2
 console.log(fib(3)); // 3
 console.log(fib(7)); // 21
 
+/*
+Create a function that takes a grid as an argument and adds all
+the numbers in that grid together. The grid can have any number
+of nested arrays, with any possible depth.
+
+Test Cases:
+const y = [[[1]], [[2]]];
+console.log(addGridItems(y)); // 3
+const x = [
+  [[1, 0, -3], [2, 4], [3]], 
+  [[4, 4, 3], [5, -3, -1], [6, 10]],
+  [[7, -5, -5], [8, 0], [9, 1]] 
+]
+console.log(addGridItems(x)); // 50
+*/
+
+// function addGridItems(grid) {
+//   // base case
+//   if(grid.length === 0)
+//   return 0;
+//   return Array.isArray(grid)
+//     ? grid.reduce((acc, b) => acc + addGridItems(b), 0)
+//     : grid;
+// }
+
+function addGridItems (grid) {
+
+// return grid.flat(Infinity).reduce((a, b) => a + b);
+
+  let acc = 0;
+  for(let item of grid) {
+    if(Array.isArray(item)){
+      acc += addGridItems(item);
+    } else {
+      acc += item;
+    }
+  }
+  return acc;
+}
+
+// Test Cases:
+const y = [[[1]], [[2]]];
+console.log(addGridItems(y)); // 3
+const x = [
+  [[1, 0, -3], [2, 4], [3]], 
+  [[4, 4, 3], [5, -3, -1], [6, 10]],
+  [[7, -5, -5], [8, 0], [9, 1]] 
+]
+console.log(addGridItems(x)); // 50
 
 /*------------------
 6) Write a sortedInsert() function which inserts a node into 
